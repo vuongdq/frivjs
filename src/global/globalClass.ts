@@ -1,4 +1,4 @@
-export class responseData<D>{
+export class ResponseData<D>{
     data: D | D[];
     statusCode: number;
     message: string;
