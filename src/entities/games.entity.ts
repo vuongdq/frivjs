@@ -1,4 +1,5 @@
-import { BaseEntity, Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { BaseEntity, Column, Entity, ManyToOne, PrimaryGeneratedColumn,JoinColumn } from "typeorm";
+import { CategoriesEntity } from "./categories.entity";
 
 @Entity('games')
 export class GamesEntity extends BaseEntity{
@@ -15,4 +16,8 @@ export class GamesEntity extends BaseEntity{
     gameImage:string;
     @Column()
     gameFile:string;
+
+    @ManyToOne(()=>CategoriesEntity)
+    @JoinColumn({name:'categoryID', referencedColumnName:'id'})
+    category:CategoriesEntity;
 }

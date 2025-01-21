@@ -13,7 +13,7 @@ export class CategoryRepository implements ICategoryRepository {
         return await this.categoryRepository.find();
     }
     async findById(id: number): Promise<Category> {
-        return await this.categoryRepository.findOne({where: {id}});
+        return await this.categoryRepository.findOne({where: {id}, relations: ['games']});
     }
     async create(category: Category): Promise<Category> {
         return await this.categoryRepository.save(category);

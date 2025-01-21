@@ -11,7 +11,9 @@ export class CategoriesEntity extends BaseEntity{
 
     @Column()
     description: string;
-    @OneToMany(()=>GamesEntity, games =>games.categoryID )
+
+
+    @OneToMany(()=>GamesEntity, games =>games.category )
     @JoinColumn()
     games:GamesEntity[];
 
