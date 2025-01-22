@@ -28,5 +28,7 @@ export class GameService {
         }
         return false;
     }
-
+    async findRelationById(id: number): Promise<Game> {
+        return await this.gameRepository.findRelationById({where: {id}});
+    }
 }

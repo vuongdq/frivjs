@@ -3,5 +3,5 @@ import { AbstractPromise } from "./AbstrackRepository";
 
 
 export interface IGameRepository extends AbstractPromise<Game>{
-
+    findRelationById(id: number): Promise<Game>;
 }
