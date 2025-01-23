@@ -16,8 +16,4 @@ implements IGameRepository {
     ) {
         super(repository);
     }
-    async findRelationById(id: number): Promise<Game> {
-        return await this.repository.findOne({where: {id}, relations: ['category']});
-    }
-
 }

@@ -27,7 +27,4 @@ export class GameService {
         return await this.gameRepository.delete(id);
    
     }
-    async findRelationById(id: number): Promise<Game> {
-        return await this.gameRepository.findRelationById(id);
-    }
 }

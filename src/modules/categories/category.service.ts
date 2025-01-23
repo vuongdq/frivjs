@@ -8,7 +8,6 @@ import { Repository } from "typeorm";
 @Injectable()
 export class CategoryService {
     constructor(
-
         @Inject("ICategoryRepository")
         private readonly categoryRepository: ICategoryRepository
     ) { }

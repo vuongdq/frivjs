@@ -58,20 +58,4 @@ export class GameController {
             return res.json(new ResponseData(null,HttpStatus.ERROR, HttpMessage.ERROR));
         }
     }
-    @Get("/relations/:id")
-    async findRelationById(@Param('id') id:number, @Res() res:Response){
-        try {
-            return res.json(
-                new ResponseData(
-                    await this.gameService.findRelationById(id),
-                    HttpStatus.SUCCESS, 
-                    HttpMessage.SUCCESS
-                )
-            );
-        } catch (error) {
-            return res.json(
-                new ResponseData(null,HttpStatus.ERROR, HttpMessage.ERROR)
-            );
-        }
-    }
 }
