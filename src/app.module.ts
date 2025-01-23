@@ -8,6 +8,7 @@ import { CategoryModule } from './modules/categories/category.module';
 import { GamesEntity } from './entities/games.entity';
 import { CategoriesEntity } from './entities/categories.entity';
 import { AccountEntity } from './entities/accounts.entity';
+import { AuthModule } from './modules/auth/auth.module';
 
 @Module({
   imports: [TypeOrmModule.forRoot({
@@ -22,6 +23,7 @@ import { AccountEntity } from './entities/accounts.entity';
   }),
   GameModule,
   CategoryModule,
+  AuthModule,
 ],
   controllers: [AppController],
   providers: [AppService],
