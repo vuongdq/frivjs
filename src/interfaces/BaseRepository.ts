@@ -3,9 +3,9 @@ import { InjectRepository } from "@nestjs/typeorm";
 
 export abstract class BaseRepository<
 T extends BaseEntity,
-R extends Repository<T>
+R extends Repository<T>,
 >  {
-      constructor(@InjectRepository(BaseEntity) 
+      constructor(@InjectRepository(Repository<T>) 
         protected readonly repository: R) { }
         async findAll(): Promise<T[]> {
             return await this.repository.find();

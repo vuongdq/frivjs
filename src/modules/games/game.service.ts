@@ -1,34 +1,33 @@
-import { Injectable } from "@nestjs/common";
+import { Inject, Injectable } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
 import { GamesEntity } from "src/entities/games.entity";
 import { Game } from "src/models/game.model";
-import { Repository } from "typeorm";
+import { ICategoryRepository } from "src/interfaces/ICategoryRepository";
+import { IGameRepository } from "src/interfaces/IGameRepository";
 
 @Injectable()
 export class GameService {
-    constructor(@InjectRepository(GamesEntity) 
-    private readonly gameRepository: Repository<GamesEntity>) { }
+    constructor(
+        @Inject("IGameRepository")
+    private readonly gameRepository: IGameRepository) { }
     async findAll(): Promise<Game[]> {
-        return await this.gameRepository.find();
+        return await this.gameRepository.findAll();
     }
     async findById(id: number): Promise<Game> {
-        return await this.gameRepository.findOne({where: {id}});
+        return await this.gameRepository.findById(id);
     }
     async create(game: Game): Promise<Game> {
-        return await this.gameRepository.save(game);
+        return await this.gameRepository.create(game);
     }
     async update(id: number, game: Game): Promise<Game> {
         await this.gameRepository.update(id, game); 
         return this.findById(id);
     }
     async delete(id: number): Promise<boolean> {
-        const isDelete = await this.gameRepository.delete(id);
-        if(isDelete.affected > 0) {
-            return true;
-        }
-        return false;
+        return await this.gameRepository.delete(id);
+   
     }
     async findRelationById(id: number): Promise<Game> {
-        return await this.gameRepository.findRelationById({where: {id}});
+        return await this.gameRepository.findRelationById(id);
     }
 }

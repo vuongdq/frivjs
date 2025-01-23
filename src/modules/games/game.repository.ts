@@ -7,9 +7,13 @@ import { Game } from "src/models/game.model";
 import { Repository } from "typeorm";
 
 @Injectable()
-export class GameRepository extends BaseRepository<GamesEntity,Repository<GamesEntity>> implements IGameRepository {
-    constructor(@InjectRepository(GamesEntity)
-    protected readonly repository: Repository<GamesEntity>) {
+export class GameRepository 
+extends BaseRepository<GamesEntity,Repository<GamesEntity>> 
+implements IGameRepository {
+    constructor(
+        @InjectRepository(GamesEntity)
+        protected readonly repository: Repository<GamesEntity>
+    ) {
         super(repository);
     }
     async findRelationById(id: number): Promise<Game> {
