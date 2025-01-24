@@ -6,12 +6,12 @@ import { HttpMessage, HttpStatus } from "src/global/globalEnum";
 import { ResponseType } from "src/global/globalType";
 import { AuthService } from "./auth.service";
 
-@Controller("auth")
+@Controller("/auth")
 export class AuthController {
     constructor(protected readonly authService: AuthService) {
         console.log("AuthController created");
     }
-    @Post("signin")
+    @Post("/signin")
     async signIn(@Body() auth: AuthPayloadDto,
     @Res() res: Response,
     ): Promise<ResponseType<AuthPermission|boolean>> {
@@ -34,7 +34,7 @@ export class AuthController {
             );
         }
     }
-    @Post("signup")
+    @Post("/signup")
     async signUp(@Body() auth: AuthPayloadDto,@Res() res: Response): Promise<ResponseType<AuthResponseDto|boolean>> {
         try {
             const isAuth = await this.authService.signUp(auth);

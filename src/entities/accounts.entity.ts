@@ -6,7 +6,7 @@ export class AccountEntity extends BaseEntity{
     id:number;
 
     @Column()
-    username:number;
+    username:string;
     @Column()
     password: string;
     @Column()

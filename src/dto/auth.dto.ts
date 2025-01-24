@@ -1,12 +1,12 @@
 export class AuthResponseDto {
     id: number;
     username: string;
-    permissions: string;
+    permission: string;
 
-    constructor(id, username, permissions) {    
+    constructor({id, username, permission}) {    
         this.id = id;
         this.username = username;
-        this.permissions = permissions;
+        this.permission = permission;
         return this;
     }
 }
